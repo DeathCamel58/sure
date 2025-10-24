@@ -80,10 +80,6 @@ class SimplefinItem < ApplicationRecord
     end
 
     assign_attributes(
-      institution_id: org[:id],
-      institution_name: org[:name],
-      institution_domain: domain,
-      institution_url: url,
       raw_institution_payload: org_data
     )
   end
@@ -130,7 +126,7 @@ class SimplefinItem < ApplicationRecord
 
   def institution_display_name
     # Try to get institution name from stored metadata
-    institution_name.presence || institution_domain.presence || name
+    name
   end
 
   def connected_institutions
